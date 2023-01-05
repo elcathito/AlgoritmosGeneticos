@@ -23,6 +23,7 @@ public class TesteGrafoProfessor {
         grafo.addVertice("K");
         grafo.addVertice("L");
         grafo.addVertice("M");
+        grafo.addVertice("N");
         grafo.addVertice("O");
         grafo.addVertice("P");
         grafo.addVertice("Q");
@@ -45,8 +46,71 @@ public class TesteGrafoProfessor {
 
         System.out.println("\n                   Inserindo Apontador Para o Vertice: \n");
 
+        grafo.criarApontadorComPesos("A","B" , 3);
+        grafo.criarApontadorComPesos("A","F", 3);
 
-        grafo.criarApontadorComPesos("A","B" , 2);
+        grafo.criarApontadorComPesos("B","C", 4);
+        grafo.criarApontadorComPesos("B","G", 5);
+        grafo.criarApontadorComPesos("B","H", 3);
+
+        grafo.criarApontadorComPesos("C","D",1);
+        grafo.criarApontadorComPesos("C","I",4);
+
+        grafo.criarApontadorComPesos("D","E",4);
+        grafo.criarApontadorComPesos("D","I",5);
+
+        grafo.criarApontadorComPesos("E","J",2);
+
+        grafo.criarApontadorComPesos("F","G",1);
+        grafo.criarApontadorComPesos("F","K",4);
+        grafo.criarApontadorComPesos("F","L",2);
+
+        grafo.criarApontadorComPesos("G","H",2);
+
+        grafo.criarApontadorComPesos("H","I",5);
+        grafo.criarApontadorComPesos("H","L",5);
+
+        grafo.criarApontadorComPesos("I","J",2);
+        grafo.criarApontadorComPesos("I","N",3);
+
+        grafo.criarApontadorComPesos("J","O",5);
+
+        grafo.criarApontadorComPesos("K","L",3);
+        grafo.criarApontadorComPesos("K","P",3);
+        grafo.criarApontadorComPesos("K","Q",3);
+
+        grafo.criarApontadorComPesos("L","M",2);
+
+        grafo.criarApontadorComPesos("M","N",1);
+        grafo.criarApontadorComPesos("M","R",2);
+
+        grafo.criarApontadorComPesos("N","O",2);
+
+        grafo.criarApontadorComPesos("O","T",3);
+        grafo.criarApontadorComPesos("O","S",4);
+
+        grafo.criarApontadorComPesos("P","Q",6);
+        grafo.criarApontadorComPesos("P","U",5);
+
+        grafo.criarApontadorComPesos("Q","R",1);
+        grafo.criarApontadorComPesos("Q","V",5);
+
+        grafo.criarApontadorComPesos("R","S",2);
+
+        grafo.criarApontadorComPesos("S","T",3);
+        grafo.criarApontadorComPesos("S","Y",3);
+
+        grafo.criarApontadorComPesos("T","Z",2);
+
+        grafo.criarApontadorComPesos("U","V",3);
+
+        grafo.criarApontadorComPesos("V","X",2);
+
+        grafo.criarApontadorComPesos("X","Y",2);
+
+        grafo.criarApontadorComPesos("Y","Z",4);
+
+        /*grafo.criarApontadorComPesos("A","B" , 2);
         grafo.criarApontadorComPesos("A","F", 3);
 
         grafo.criarApontadorComPesos("B","A", 4);
@@ -108,7 +172,7 @@ public class TesteGrafoProfessor {
         grafo.criarApontadorComPesos("T","S",1);
         grafo.criarApontadorComPesos("T","U",1);
 
-        grafo.criarApontadorComPesos("U","T",1);
+        grafo.criarApontadorComPesos("U","T",1);*/
 
 
         grafo.listarFullVerticeArestas();
@@ -118,11 +182,11 @@ public class TesteGrafoProfessor {
         System.out.println("\n==================================================================================\n");
 
         System.out.println("                - BUSCANDO TODOS OS POSSIVEIS CAMINHOS! - \n");
-        grafo.buscarTodosCaminhos("A","S");
+        grafo.buscarTodosCaminhos("A","C");
 
 
         System.out.println("\n                    - BUSCANDO OS MELHOR CAMINHO! - \n");
-        grafo.buscarMelhorCaminho("A","S");
+        grafo.buscarMelhorCaminho("A","C");
 
         System.out.println("\n==================================================================================\n");
 

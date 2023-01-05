@@ -31,13 +31,18 @@ public class Grafo {
         Vertice verticeOrigem = buscarVertice(dadoOrigem);
         Vertice verticeDestino = buscarVertice(dadoDestino);
 
-        if(verticeOrigem==null || verticeDestino==null){
-            System.out.println("Nao Foi Possivel Realizar a Operacao! \nO Elemento de Origem e/ou de Destino Nao Foi/Foram Encontrado(s)!");
+        if(verticeOrigem==null ){
+            System.out.println("Ops >> Elemento *"+dadoOrigem+"* Nao Encontrado!");
+        }if(verticeDestino==null){
+            System.out.println("Ops >> Elemento *"+dadoDestino+"* Nao Encontrado!");
         }else{
             Aresta aresta = new Aresta(verticeDestino);
             aresta.adicionarPeso(peso);
-
             verticeOrigem.arestas.add(aresta);
+
+            Aresta arestaReverso = new Aresta(verticeOrigem);
+            arestaReverso.adicionarPeso(peso);
+            verticeDestino.arestas.add(arestaReverso);
             //System.out.println("> Vertice "+dadoOrigem+" aponta para o vertice "+dadoDestino+ " com o custo "+peso);
         }
     }
