@@ -1,23 +1,26 @@
 package Avaliacao2.AlgoritmoGenetico;
 
+import Avaliacao2.GrafoExemplo01.Grafo;
+
+import java.util.List;
 import java.util.Random;
 
 public class Individuo {
 
-    private String [] cromossomo;
+    private List<String> cromossomo;
 
     private double aptidao;
 
 //====================================================================================================================//
 
-    public Individuo() {
+    public Individuo(Grafo grafo) {
         this.cromossomo = gerarCromossomo();
         this.aptidao = determinarAptidao();
     }
 
 //---------------------------------------------------------------------------//
 
-    public Individuo(String [] cromossomoPai1, String [] cromossomoPai2) {
+    public Individuo(List<String> cromossomoPai1, List<String> cromossomoPai2) {
 
         this.cromossomo = cromossomoPai1;
         this.aptidao = determinarAptidao();
@@ -26,7 +29,7 @@ public class Individuo {
 
 //====================================================================================================================//
 
-    private String [] gerarCromossomo(){
+    private List<String> gerarCromossomo(){
 
         return null;
     }

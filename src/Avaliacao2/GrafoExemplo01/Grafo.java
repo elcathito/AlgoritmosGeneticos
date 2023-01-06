@@ -2,6 +2,7 @@ package Avaliacao2.GrafoExemplo01;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 // MP  {  [dado, Vertice(dado)] , [dado, Vertice(dado)]                                         }
@@ -22,6 +23,13 @@ public class Grafo {
 
     public void addVertice(String dado){
         mapaGrafo.put( dado, new Vertice(dado));
+        //System.out.println("O Vertice Com o Dado "+dado+", Foi Criado e Adicionado ao Grafo!");
+    }
+
+    public void addAllVertice(List<String> listNos){
+        for (String no: listNos) {
+            mapaGrafo.put( no, new Vertice(no));
+        }
         //System.out.println("O Vertice Com o Dado "+dado+", Foi Criado e Adicionado ao Grafo!");
     }
 
