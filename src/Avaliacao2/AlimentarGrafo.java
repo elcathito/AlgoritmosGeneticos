@@ -53,6 +53,7 @@ public class AlimentarGrafo {
         grafo.criarApontadorComPesos("V","X",2);
         grafo.criarApontadorComPesos("X","Y",2);
         grafo.criarApontadorComPesos("Y","Z",4);
+        grafo.criarApontadorComPesos("Z","X",4);
         return grafo;
     }
 

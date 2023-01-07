@@ -2,8 +2,8 @@ package Avaliacao2.GrafoExemplo01;
 
 public class Aresta {
 
-    Vertice destino;
-    int peso;
+    public Vertice destino;
+    public int peso;
 
 //==========================================================================//
 

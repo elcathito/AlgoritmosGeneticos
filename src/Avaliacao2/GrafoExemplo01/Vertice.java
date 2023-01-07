@@ -3,10 +3,13 @@ package Avaliacao2.GrafoExemplo01;
 import java.util.ArrayList;
 
 public class Vertice {
-    String dado;
-    ArrayList <Aresta> arestas = new ArrayList <Aresta>();
+    public String dado;
+    public ArrayList <Aresta> arestas = new ArrayList <Aresta>();
 
 //==========================================================================//
+
+    public Vertice(){
+    }
 
     public Vertice(String dado){
         this.dado = dado;

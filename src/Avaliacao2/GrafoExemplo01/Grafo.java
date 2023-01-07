@@ -48,9 +48,9 @@ public class Grafo {
             aresta.adicionarPeso(peso);
             verticeOrigem.arestas.add(aresta);
 
-            Aresta arestaReverso = new Aresta(verticeOrigem);
+            /*Aresta arestaReverso = new Aresta(verticeOrigem);
             arestaReverso.adicionarPeso(peso);
-            verticeDestino.arestas.add(arestaReverso);
+            verticeDestino.arestas.add(arestaReverso);*/
             //System.out.println("> Vertice "+dadoOrigem+" aponta para o vertice "+dadoDestino+ " com o custo "+peso);
         }
     }
