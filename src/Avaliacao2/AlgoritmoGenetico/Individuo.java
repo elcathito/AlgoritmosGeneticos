@@ -4,13 +4,12 @@ import Avaliacao2.GrafoExemplo01.Aresta;
 import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
-public class Individuo {
+public class Individuo implements Comparable<Individuo> {
 
     private List<String> cromossomo = new ArrayList<>();
 
@@ -18,13 +17,12 @@ public class Individuo {
 
 //---------------------------------------------------------------------------//
 
-    private Random aleatoriedade = new Random();
-
-//====================================================================================================================//
+    //====================================================================================================================//
 
     public Individuo( Grafo grafo, Vertice verticeOrigem, Vertice verticeDestino ) {
         cromossomo.add( verticeOrigem.dado );
 
+        Random aleatoriedade = new Random();
         int tamanhoCromossomo = aleatoriedade.nextInt(grafo.getMapaGrafo().size() - 2 );
 
         Vertice verticeAtual = verticeOrigem;
@@ -33,7 +31,7 @@ public class Individuo {
             int indiceAresta = aleatoriedade.nextInt( verticeAtual.arestas.size() );
             Aresta arestaSelecionada = verticeAtual.arestas.get( indiceAresta );
 
-            if( arestaSelecionada.destino.dado == verticeDestino.dado ) {
+            if(Objects.equals(arestaSelecionada.destino.dado, verticeDestino.dado)) {
                 aptidao += arestaSelecionada.peso;
                 break;
             } else {
@@ -45,8 +43,9 @@ public class Individuo {
 
         boolean encontrou = false;
         for ( Aresta aresta : verticeAtual.arestas ) {
-            if( aresta.destino.dado == verticeDestino.dado ){
+            if (Objects.equals(aresta.destino.dado, verticeDestino.dado)) {
                 encontrou = true;
+                break;
             }
         }
         if(!encontrou){
@@ -79,6 +78,26 @@ public class Individuo {
         return 0;
     }
 
-//====================================================================================================================//
+    /**
+     * Compara a apitidão do individo atual com um outro individo.
+     * @param outroIndivido represemta o outro individo que se deseja comparar.
+     * @return 1 se o individo atual for maior que o outroIndivido.<br>
+     * 0 se o individo atual for igual ao outroIndivido.<br>
+     * -1 se o individo atual for menor que o outroIndivido.
+     * @author Gustavo Avila Gama.
+     * **/
+    @Override
+    public int compareTo(Individuo outroIndivido) {
+        return Double.compare(this.aptidao,outroIndivido.aptidao);
+    }
+
+    @Override
+    public String toString() {
+        return "Individuo{" +
+                "cromossomo=" + cromossomo +
+                ", aptidao=" + aptidao +
+                '}';
+    }
+    //====================================================================================================================//
 
 }
