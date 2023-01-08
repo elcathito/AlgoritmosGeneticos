@@ -5,6 +5,8 @@ import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class AlgoritmoGeneticoMain {
@@ -55,7 +57,9 @@ public class AlgoritmoGeneticoMain {
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
 
         }
-
+        System.out.println(Arrays.toString(populacaoInicial.toArray()));
+        Collections.sort(populacaoInicial);//Metodo de ordenação de listas do tipo individo.
+        System.out.println(Arrays.toString(populacaoInicial.toArray()));
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
     }
