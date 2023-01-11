@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Grafo {
 
-    private Map <String, Vertice> mapaGrafo = new HashMap <String, Vertice>();
+    private final Map <String, Vertice> mapaGrafo = new HashMap <String, Vertice>();
 
     private ArrayList<ArrayList<Boolean>> tabelaIncidencia;
 

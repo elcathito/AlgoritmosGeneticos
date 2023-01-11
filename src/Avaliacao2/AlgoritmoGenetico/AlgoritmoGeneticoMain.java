@@ -4,10 +4,7 @@ import Avaliacao2.AlimentarGrafo;
 import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class AlgoritmoGeneticoMain {
 
@@ -29,8 +26,8 @@ public class AlgoritmoGeneticoMain {
 
 
         System.out.println("                                         >> RESUMO - PARAMETROS <<");
-        System.out.println("      >> NUMERO DE GERACOES: " + nrGeracoes );
-        System.out.println("      >> POPULACAO INICIAL: " + tamanhoPopulacao );
+        System.out.println("      >> NUMERO DE GERACOES: " + nrGeracoes);
+        System.out.println("      >> POPULACAO INICIAL: " + tamanhoPopulacao);
         System.out.println("      >> PERCENTAL MUTACOES: " + porcentagemMutacao + "%");
 
         System.out.println(">> -------------------------------------------------------------------------------------------------- <<\n");
@@ -55,11 +52,16 @@ public class AlgoritmoGeneticoMain {
 
         System.out.println("PROCESSANDO AS GERACOES...");
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-
+            List<Individuo>novaPop = populacaoInicial;
+            Map<Parametos, Integer> parametros = new HashMap<>();
+                parametros.put(Parametos.NrDeRodadas, 10);
+                parametros.put( Parametos.NrDeCompetidore, 15);
+           novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros,true);
+            System.out.println(Arrays.toString(novaPop.toArray()));
         }
-        System.out.println(Arrays.toString(populacaoInicial.toArray()));
+        /*System.out.println(Arrays.toString(populacaoInicial.toArray()));
         Collections.sort(populacaoInicial);//Metodo de ordenação de listas do tipo individo.
-        System.out.println(Arrays.toString(populacaoInicial.toArray()));
+        System.out.println(Arrays.toString(populacaoInicial.toArray()));*/
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
     }
