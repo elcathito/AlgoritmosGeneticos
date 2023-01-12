@@ -52,11 +52,11 @@ public class AlgoritmoGeneticoMain {
 
         System.out.println("PROCESSANDO AS GERACOES...");
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-            List<Individuo>novaPop = populacaoInicial;
+            List<? extends IndividuoAbs> novaPop = populacaoInicial;
             Map<Parametos, Integer> parametros = new HashMap<>();
-                parametros.put(Parametos.NrDeRodadas, 10);
-                parametros.put( Parametos.NrDeCompetidore, 15);
-           novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros,true);
+            parametros.put(Parametos.NrDeRodadas, 10);
+            parametros.put(Parametos.NrDeCompetidore, 15);
+            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);
             System.out.println(Arrays.toString(novaPop.toArray()));
         }
         /*System.out.println(Arrays.toString(populacaoInicial.toArray()));

@@ -8,6 +8,9 @@ public abstract class IndividuoAbs implements Comparable<IndividuoAbs> {
 
     protected double aptidao;
 
+    public double getAptidao() {
+        return aptidao;
+    }
 
     /**
      * Compara a apitidão do individo atual com um outro individo.

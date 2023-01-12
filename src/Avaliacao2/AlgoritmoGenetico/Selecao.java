@@ -20,29 +20,28 @@ public class Selecao {
         random = new Random();
     }
 
-    public  List<Individuo> selecaoPorTorneio(List<Individuo> pop, Map<Parametos, Integer> parametros, boolean vencedorMaiorValor){
-        List<Individuo> novaPop = new ArrayList<>();
-        int nrComp = parametros.get(Parametos.NrDeCompetidore);
+    public List<IndividuoAbs> selecaoPorTorneio(List<? extends IndividuoAbs> pop, Map<Parametos, Integer> parametros, boolean vencedorMaiorValor) {
+        List<IndividuoAbs> novaPop = new ArrayList<>();
         for (int i = 0; i < parametros.get(Parametos.NrDeRodadas); i++) {
-            novaPop.add(torneio(pop,vencedorMaiorValor,nrComp));
+            novaPop.add(torneio(pop, vencedorMaiorValor, parametros.get(Parametos.NrDeCompetidore)));
         }
         return novaPop;
     }
 
-    private Individuo torneio(List<Individuo> pop,boolean vencedorMaiorValor, int nrComp){
-        List<Individuo> competidores = selecaoDeIndividosAleatorios(pop, nrComp);
+    private IndividuoAbs torneio(List<? extends IndividuoAbs> pop, boolean vencedorMaiorValor, int nrComp) {
+        List<IndividuoAbs> competidores = selecaoDeIndividosAleatorios(pop, nrComp);
         Collections.sort(competidores);
-        Individuo vencedor;
+        IndividuoAbs vencedor;
         if (vencedorMaiorValor) vencedor = competidores.get(nrComp - 1);
         else vencedor = competidores.get(0);
         return vencedor;
     }
 
-    private List<Individuo> selecaoDeIndividosAleatorios(List<Individuo> fonte, int qtdIndividos) {
-        List<Individuo> resultado = new ArrayList<>();
+    private List<IndividuoAbs> selecaoDeIndividosAleatorios(List<? extends IndividuoAbs> fonte, int qtdIndividos) {
+        List<IndividuoAbs> resultado = new ArrayList<>();
         int nrVoltas = qtdIndividos;
         while (nrVoltas-- >= 0) {
-            resultado.add(fonte.get(random.nextInt(qtdIndividos)));
+            resultado.add(fonte.get(random.nextInt(fonte.size())));
         }
         return resultado;
     }

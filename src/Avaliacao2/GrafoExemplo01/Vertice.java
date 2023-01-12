@@ -59,4 +59,9 @@ public class Vertice {
         if (obj == this) return true;
         return this.dado.equals(((Vertice) obj).dado);
     }
+
+    @Override
+    public String toString() {
+        return  dado;
+    }
 }
