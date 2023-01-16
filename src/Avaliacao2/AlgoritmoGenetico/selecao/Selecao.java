@@ -1,4 +1,7 @@
-package Avaliacao2.AlgoritmoGenetico;
+package Avaliacao2.AlgoritmoGenetico.selecao;
+
+import Avaliacao2.AlgoritmoGenetico.Parametos;
+import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
 
 import java.util.ArrayList;
 import java.util.Collections;

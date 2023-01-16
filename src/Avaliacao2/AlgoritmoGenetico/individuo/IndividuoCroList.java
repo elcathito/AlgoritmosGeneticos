@@ -1,10 +1,11 @@
-package Avaliacao2.AlgoritmoGenetico;
+package Avaliacao2.AlgoritmoGenetico.individuo;
 
+import Avaliacao2.AlgoritmoGenetico.MapVerticeAresta;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
 import java.util.List;
 
-import static Avaliacao2.AlgoritmoGenetico.Recombinacao.newRecombinacao;
+import static Avaliacao2.AlgoritmoGenetico.codificacao.Codificacao.newRecombinacao;
 
 /**
  * @author Gustavo A. Gama
