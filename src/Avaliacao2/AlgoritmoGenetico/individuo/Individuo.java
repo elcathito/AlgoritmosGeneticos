@@ -1,4 +1,4 @@
-package Avaliacao2.AlgoritmoGenetico;
+package Avaliacao2.AlgoritmoGenetico.individuo;
 
 import Avaliacao2.GrafoExemplo01.Aresta;
 import Avaliacao2.GrafoExemplo01.Grafo;

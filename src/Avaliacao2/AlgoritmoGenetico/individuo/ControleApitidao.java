@@ -1,4 +1,4 @@
-package Avaliacao2.AlgoritmoGenetico;
+package Avaliacao2.AlgoritmoGenetico.individuo;
 
 public class ControleApitidao {
     private double apitidao;

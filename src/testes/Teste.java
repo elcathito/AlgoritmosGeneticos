@@ -1,8 +1,10 @@
 package testes;
 
 import Avaliacao2.AlgoritmoGenetico.*;
+import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
+import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoCroList;
+import Avaliacao2.AlgoritmoGenetico.selecao.Selecao;
 import Avaliacao2.AlimentarGrafo;
-import Avaliacao2.GrafoExemplo01.Aresta;
 import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
