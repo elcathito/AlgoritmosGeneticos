@@ -1,7 +1,6 @@
 package Avaliacao2.Grafo3;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 public class Grafo {
 
@@ -18,6 +17,8 @@ public class Grafo {
                 if (i == j) valor = 0;
                 else if (i > j) valor = grafo[j][i];
                 else valor = r.nextInt(distMax);
+
+                if (r.nextInt(10)<2) valor = 0;//ALMENTA EM 20% A CHANCE DE VIR PESO 0
                 grafo[i][j] = valor;
             }
         }
@@ -30,12 +31,14 @@ public class Grafo {
     public int getDistMax() {
         return distMax;
     }
+    public Aresta getAresta(int verticeOrigem, int verticeDestino) {
+        return new Aresta(verticeOrigem,verticeDestino,grafo[verticeOrigem][verticeDestino]);
+    }
 
     @Override
     public String toString() {
 
         StringBuilder builder = new StringBuilder("\n                                             Matriz de adjacência\n");
-        int a = 0;
         for (int[] content : grafo) {
             builder.append("[");
             for (int value :
