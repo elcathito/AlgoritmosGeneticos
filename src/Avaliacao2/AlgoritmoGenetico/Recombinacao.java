@@ -19,6 +19,11 @@ public class Recombinacao {
         random = new Random();
     }
 
+    public List<MapVerticeAresta> getCromossomoList(Vertice origem, Vertice destino, ControleApitidao controleApi){
+        List<MapVerticeAresta> cromossomo = new ArrayList<>();
+        buscaDoDestino(destino, cromossomo, origem,controleApi);
+        return cromossomo;
+    }
 
     public Map<Vertice, Aresta> newCromossomo(Vertice origem, Vertice destino, ControleApitidao controleApi) {
         Map<Vertice, Aresta> rota = new HashMap<>();
@@ -26,18 +31,20 @@ public class Recombinacao {
 
         return rota;
     }
-
-    private void buscaDoDestino(Vertice destino, Map<Vertice, Aresta> rota, Vertice origem,ControleApitidao controleApi) {
-        Vertice proximoPonto = incersaoDePontosNaRota(rota, origem,controleApi);
-        if (!proximoPonto.equals(destino)&& controleApi.get()<200)
-            buscaDoDestino(destino, rota, proximoPonto,controleApi);
+    private void buscaDoDestino(Vertice destino, List<MapVerticeAresta> rota, Vertice origem,ControleApitidao controleApi) {
+        List<Aresta> arestasOri = origem.arestas;
+        Aresta caminhoEscolhido = arestasOri.get(random.nextInt(arestasOri.size()));
+        controleApi.incremente(caminhoEscolhido.peso);
+        rota.add(new MapVerticeAresta(origem, caminhoEscolhido));
+        if (!caminhoEscolhido.destino.equals(destino)&& controleApi.get()<200)
+            buscaDoDestino(destino, rota, caminhoEscolhido.destino,controleApi);
     }
-
-    private Vertice incersaoDePontosNaRota(Map<Vertice, Aresta> rota, Vertice origem,ControleApitidao controleApi) {
+    private void buscaDoDestino(Vertice destino, Map<Vertice, Aresta> rota, Vertice origem,ControleApitidao controleApi) {
         List<Aresta> arestasOri = origem.arestas;
         Aresta caminhoEscolhido = arestasOri.get(random.nextInt(arestasOri.size()));
         controleApi.incremente(caminhoEscolhido.peso);
         rota.put(origem, caminhoEscolhido);
-        return caminhoEscolhido.destino;
+        if (!caminhoEscolhido.destino.equals(destino)&& controleApi.get()<200)
+            buscaDoDestino(destino, rota, caminhoEscolhido.destino,controleApi);
     }
 }

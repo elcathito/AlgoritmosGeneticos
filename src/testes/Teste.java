@@ -8,34 +8,32 @@ import Avaliacao2.GrafoExemplo01.Vertice;
 
 import java.util.*;
 
+import static Avaliacao2.AlgoritmoGenetico.Prints.informacoesInicais;
+
 
 public class Teste {
     public static void main(String[] args) {
         AlimentarGrafo alimentarGrafo = new AlimentarGrafo();
         Grafo grafo = alimentarGrafo.padrao_25_vertices();
 
-        ArrayList<IndividuoMap> populacaoInicial = new ArrayList<>();
+        ArrayList<IndividuoCroList> populacaoInicial = new ArrayList<>();
 
         int tamanhoPopulacao = 100;
         double porcentagemMutacao = 5;
         int nrGeracoes = 10;
 
-        System.out.println("                                         >> RESUMO - PARAMETROS <<");
-        System.out.println("      >> NUMERO DE GERACOES: " + nrGeracoes);
-        System.out.println("      >> POPULACAO INICIAL: " + tamanhoPopulacao);
-        System.out.println("      >> PERCENTAL MUTACOES: " + porcentagemMutacao + "%");
+        informacoesInicais(nrGeracoes,tamanhoPopulacao,porcentagemMutacao);
 
-        System.out.println(">> -------------------------------------------------------------------------------------------------- <<\n");
         Vertice verticeOrigem = grafo.buscarVertice("A");
         Vertice verticeDestino = grafo.buscarVertice("O");
 
         System.out.println("START...");
 
         for (int index = 0; index < tamanhoPopulacao; index++) {
-            populacaoInicial.add(new IndividuoMap(verticeOrigem, verticeDestino));
+            populacaoInicial.add(new IndividuoCroList(verticeOrigem, verticeDestino));
         }
         System.out.println("POPULACAO INICIAL ADICIONADA...");
-        printPop(populacaoInicial,verticeOrigem,verticeDestino);
+        printPop(populacaoInicial);
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
         System.out.println("PROCESSANDO AS GERACOES...");
@@ -46,30 +44,15 @@ public class Teste {
             parametros.put(Parametos.NrDeCompetidore, 15);
             novaPop =  Selecao.newSelecao().selecaoPorTorneio( novaPop, parametros, false);
         }
-        printPop(novaPop,verticeOrigem,verticeDestino);
+        printPop(novaPop);
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
     }
-
-    private static Vertice printInd(Map<Vertice, Aresta> rota, Vertice vertice,Vertice destino) {
-        Aresta aresta = rota.get(vertice);
-        if (vertice.equals(destino)){
-            System.out.print("{" + vertice +"}");
-            return null;
-        }else {
-            System.out.print("{" + vertice + " , " + aresta + "}, ");
-        }
-        return aresta.destino;
-    }
-    private static void printPop(List<? extends IndividuoAbs> pop,Vertice verticeOrigem,Vertice verticeDestino) {
+    private static void printPop(List<? extends IndividuoAbs> pop) {
         for (IndividuoAbs ind : pop) {
-            Map<Vertice, Aresta> rota = ((IndividuoMap)ind).getCromossomo();
-            int size = rota.size();
-            Vertice vertice = verticeOrigem;
+            List<MapVerticeAresta> cromossomo = ((IndividuoCroList)ind).getCromossomo();
             System.out.print("Individo > ");
-            while (size-- >= 0) {
-                vertice = printInd(rota, vertice,verticeDestino);
-            }
+            System.out.println(Arrays.toString(cromossomo.toArray()));
             System.out.print(" Aptidão "+ind.getAptidao());
             System.out.println();
         }

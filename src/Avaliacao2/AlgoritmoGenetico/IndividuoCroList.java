@@ -1,30 +1,29 @@
 package Avaliacao2.AlgoritmoGenetico;
 
-import Avaliacao2.GrafoExemplo01.Aresta;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
-import java.util.Map;
+import java.util.List;
 
 import static Avaliacao2.AlgoritmoGenetico.Recombinacao.newRecombinacao;
 
 /**
  * @author Gustavo A. Gama
  */
-public class IndividuoMap extends IndividuoAbs {
+public class IndividuoCroList extends IndividuoAbs {
 
     /**
      * Rota a ser percorrida.
      */
-    private final Map<Vertice, Aresta> cromossomo;
+    private final List<MapVerticeAresta> cromossomo;
 
 
-    public IndividuoMap(Vertice inicio, Vertice destino) {
+    public IndividuoCroList(Vertice inicio, Vertice destino) {
         ControleApitidao controle = new ControleApitidao();
-        this.cromossomo = newRecombinacao().newCromossomo(inicio, destino,controle);
+        this.cromossomo = newRecombinacao().getCromossomoList(inicio, destino,controle);
         aptidao = controle.get();
     }
 
-    public Map<Vertice, Aresta> getCromossomo() {
+    public List<MapVerticeAresta> getCromossomo() {
         return cromossomo;
     }
 

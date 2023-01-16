@@ -6,6 +6,8 @@ import Avaliacao2.GrafoExemplo01.Vertice;
 
 import java.util.*;
 
+import static Avaliacao2.AlgoritmoGenetico.Prints.informacoesInicais;
+
 public class AlgoritmoGeneticoMain {
 
     public static void main(String[] args) {
@@ -25,12 +27,7 @@ public class AlgoritmoGeneticoMain {
         int geracaoAlcancouMaisApto = -1;
 
 
-        System.out.println("                                         >> RESUMO - PARAMETROS <<");
-        System.out.println("      >> NUMERO DE GERACOES: " + nrGeracoes);
-        System.out.println("      >> POPULACAO INICIAL: " + tamanhoPopulacao);
-        System.out.println("      >> PERCENTAL MUTACOES: " + porcentagemMutacao + "%");
-
-        System.out.println(">> -------------------------------------------------------------------------------------------------- <<\n");
+        informacoesInicais(nrGeracoes,tamanhoPopulacao,porcentagemMutacao);
 
         /*System.out.println("Origem >> ");
         String origem = input.next();
