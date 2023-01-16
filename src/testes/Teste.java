@@ -1,6 +1,8 @@
-package Avaliacao2.AlgoritmoGenetico;
+package testes;
 
+import Avaliacao2.AlgoritmoGenetico.*;
 import Avaliacao2.AlimentarGrafo;
+import Avaliacao2.GrafoExemplo01.Aresta;
 import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
@@ -8,32 +10,19 @@ import java.util.*;
 
 import static Avaliacao2.AlgoritmoGenetico.Prints.informacoesInicais;
 
-public class AlgoritmoGeneticoMain {
 
+public class Teste {
     public static void main(String[] args) {
-
-        Scanner input = new Scanner(System.in);
-
         AlimentarGrafo alimentarGrafo = new AlimentarGrafo();
         Grafo grafo = alimentarGrafo.padrao_25_vertices();
 
-        ArrayList<Individuo> populacaoInicial = new ArrayList<>();
+        ArrayList<IndividuoCroList> populacaoInicial = new ArrayList<>();
 
         int tamanhoPopulacao = 100;
         double porcentagemMutacao = 5;
         int nrGeracoes = 10;
 
-        Individuo maisApto = null;
-        int geracaoAlcancouMaisApto = -1;
-
-
         informacoesInicais(nrGeracoes,tamanhoPopulacao,porcentagemMutacao);
-
-        /*System.out.println("Origem >> ");
-        String origem = input.next();
-
-        System.out.println("Destino >> ");
-        String destino = input.next();*/
 
         Vertice verticeOrigem = grafo.buscarVertice("A");
         Vertice verticeDestino = grafo.buscarVertice("O");
@@ -41,26 +30,31 @@ public class AlgoritmoGeneticoMain {
         System.out.println("START...");
 
         for (int index = 0; index < tamanhoPopulacao; index++) {
-            populacaoInicial.add(new Individuo(grafo, verticeOrigem, verticeDestino));
+            populacaoInicial.add(new IndividuoCroList(verticeOrigem, verticeDestino));
         }
         System.out.println("POPULACAO INICIAL ADICIONADA...");
-
+        printPop(populacaoInicial);
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
         System.out.println("PROCESSANDO AS GERACOES...");
+        List<? extends IndividuoAbs> novaPop = populacaoInicial;
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-            List<? extends IndividuoAbs> novaPop = populacaoInicial;
             Map<Parametos, Integer> parametros = new HashMap<>();
             parametros.put(Parametos.NrDeRodadas, 10);
             parametros.put(Parametos.NrDeCompetidore, 15);
-            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);
-            System.out.println(Arrays.toString(novaPop.toArray()));
+            novaPop =  Selecao.newSelecao().selecaoPorTorneio( novaPop, parametros, false);
         }
-        /*System.out.println(Arrays.toString(populacaoInicial.toArray()));
-        Collections.sort(populacaoInicial);//Metodo de ordenação de listas do tipo individo.
-        System.out.println(Arrays.toString(populacaoInicial.toArray()));*/
+        printPop(novaPop);
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
     }
-
+    private static void printPop(List<? extends IndividuoAbs> pop) {
+        for (IndividuoAbs ind : pop) {
+            List<MapVerticeAresta> cromossomo = ((IndividuoCroList)ind).getCromossomo();
+            System.out.print("Individo > ");
+            System.out.println(Arrays.toString(cromossomo.toArray()));
+            System.out.print(" Aptidão "+ind.getAptidao());
+            System.out.println();
+        }
+    }
 }
