@@ -1,4 +1,4 @@
-package Avaliacao2.AlgoritmoGenetico;
+package Avaliacao2.AlgoritmoGenetico.individuo;
 /**
  * Classe abstrata IndividuoAbs serve como base para a crição de novos individuos
  * que sejam ordenaveis e possuam aptidão do tipo double.

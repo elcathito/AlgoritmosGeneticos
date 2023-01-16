@@ -1,21 +1,22 @@
-package Avaliacao2.AlgoritmoGenetico;
+package Avaliacao2.AlgoritmoGenetico.codificacao;
 
+import Avaliacao2.AlgoritmoGenetico.MapVerticeAresta;
+import Avaliacao2.AlgoritmoGenetico.individuo.ControleApitidao;
 import Avaliacao2.GrafoExemplo01.Aresta;
-import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
 
 import java.util.*;
 
-public class Recombinacao {
+public class Codificacao {
     private final Random random;
-    private static Recombinacao instance;
+    private static Codificacao instance;
 
-    public static Recombinacao newRecombinacao() {
-        if (instance == null) instance = new Recombinacao();
+    public static Codificacao newRecombinacao() {
+        if (instance == null) instance = new Codificacao();
         return instance;
     }
 
-    private Recombinacao() {
+    private Codificacao() {
         random = new Random();
     }
 
