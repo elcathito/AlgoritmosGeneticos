@@ -5,7 +5,7 @@ import Avaliacao2.GrafoExemplo01.Vertice;
 
 import java.util.List;
 
-import static Avaliacao2.AlgoritmoGenetico.codificacao.Codificacao.newRecombinacao;
+import static Avaliacao2.AlgoritmoGenetico.codificacao.Codificacao.newCodificacao;
 
 /**
  * @author Gustavo A. Gama
@@ -20,7 +20,7 @@ public class IndividuoCroList extends IndividuoAbs {
 
     public IndividuoCroList(Vertice inicio, Vertice destino) {
         ControleApitidao controle = new ControleApitidao();
-        this.cromossomo = newRecombinacao().getCromossomoList(inicio, destino,controle);
+        this.cromossomo = newCodificacao().getCromossomoList(inicio, destino,controle);
         aptidao = controle.get();
     }
 

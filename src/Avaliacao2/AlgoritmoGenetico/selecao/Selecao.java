@@ -2,6 +2,7 @@ package Avaliacao2.AlgoritmoGenetico.selecao;
 
 import Avaliacao2.AlgoritmoGenetico.Parametos;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
+import Avaliacao2.Grafo3.Aresta;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,5 +48,38 @@ public class Selecao {
             resultado.add(fonte.get(random.nextInt(fonte.size())));
         }
         return resultado;
+    }
+
+    /**
+     * A seleção elitista (ou elitismo) é um método que
+     * obriga o algoritmo a reter uma porcentagem dos
+     * melhores indivíduos de cada população
+     * ▪ Devido ao seu comportamento elitista, este método é
+     * frequentemente combinado com outros métodos de
+     * seleção
+     * ▪ Costuma-se selecionar pequenas quantidades de
+     * indivíduos “de elite”
+     **/
+    public List<? extends IndividuoAbs> elitismo(List<? extends IndividuoAbs> pop, int porcentagem) {
+        Collections.sort(pop);
+        int tamanho = pop.size();
+        int qtdInd = tamanho * porcentagem / 100;
+        List<IndividuoAbs> eliti = new ArrayList<>();
+        int index =0;
+        while (qtdInd-- > 0) {
+            eliti.add(pop.get(index++));
+        }
+        return eliti;
+    }
+    public List<? extends IndividuoAbs> elitismo(List<? extends IndividuoAbs> pop, double porcentagem) {
+        Collections.sort(pop);
+        int tamanho = pop.size();
+        int qtdInd = (int)(tamanho * (porcentagem / 100));
+        List<IndividuoAbs> eliti = new ArrayList<>();
+        int index =0;
+        while (qtdInd-- > 0) {
+            eliti.add(pop.get(index++));
+        }
+        return eliti;
     }
 }
