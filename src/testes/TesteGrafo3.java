@@ -1,24 +1,23 @@
 package testes;
 
-import Avaliacao2.AlgoritmoGenetico.Parametos;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAd;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
-import Avaliacao2.AlgoritmoGenetico.selecao.Selecao;
 import Avaliacao2.Grafo3.Aresta;
 import Avaliacao2.Grafo3.Grafo;
 
 import java.util.*;
 
 import static Avaliacao2.AlgoritmoGenetico.Prints.informacoesInicais;
+import static Avaliacao2.AlgoritmoGenetico.selecao.Selecao.newSelecao;
 
 public class TesteGrafo3 {
     public static void main(String[] args) {
         Grafo grafo = new Grafo(9, 15);
         System.out.println(grafo);
-
+        System.out.println(grafo.getAresta(3,0));
         System.out.println();
 
-        System.out.println(grafo.getAresta(1, 8));
+
 
 
         ArrayList<IndividuoAbs> populacaoInicial = new ArrayList<>();
@@ -29,8 +28,8 @@ public class TesteGrafo3 {
 
         informacoesInicais(nrGeracoes, tamanhoPopulacao, porcentagemMutacao);
 
-        int verticeOrigem = 1;
-        int verticeDestino = 15;
+        int verticeOrigem = 3;
+        int verticeDestino = 0;
 
         System.out.println("START...");
 
@@ -38,18 +37,20 @@ public class TesteGrafo3 {
             populacaoInicial.add(new IndividuoAd(grafo, verticeOrigem, verticeDestino));
         }
         System.out.println("POPULACAO INICIAL ADICIONADA...");
-        printPop(populacaoInicial);
+        /*printPop(populacaoInicial);*/
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
         System.out.println("PROCESSANDO AS GERACOES...");
         List<? extends IndividuoAbs> novaPop = populacaoInicial;
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-            Map<Parametos, Integer> parametros = new HashMap<>();
+            /*Map<Parametos, Integer> parametros = new HashMap<>();
             parametros.put(Parametos.NrDeRodadas, 10);
             parametros.put(Parametos.NrDeCompetidore, 15);
-            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);
+            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);*/
+            novaPop=newSelecao().elitismo(novaPop,1);
+            printPop(novaPop);
         }
-        printPop(novaPop);
+
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
     }

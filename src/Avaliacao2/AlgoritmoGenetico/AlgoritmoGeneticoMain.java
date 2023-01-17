@@ -10,6 +10,7 @@ import Avaliacao2.GrafoExemplo01.Vertice;
 import java.util.*;
 
 import static Avaliacao2.AlgoritmoGenetico.Prints.informacoesInicais;
+import static Avaliacao2.AlgoritmoGenetico.selecao.Selecao.newSelecao;
 
 public class AlgoritmoGeneticoMain {
 
@@ -24,7 +25,7 @@ public class AlgoritmoGeneticoMain {
 
         int tamanhoPopulacao = 100;
         double porcentagemMutacao = 5;
-        int nrGeracoes = 10;
+        int nrGeracoes = 1;
 
         Individuo maisApto = null;
         int geracaoAlcancouMaisApto = -1;
@@ -51,12 +52,13 @@ public class AlgoritmoGeneticoMain {
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
         System.out.println("PROCESSANDO AS GERACOES...");
+        /*Map<Parametos, Integer> parametros = new HashMap<>();
+        parametros.put(Parametos.NrDeRodadas, 10);
+        parametros.put(Parametos.NrDeCompetidore, 15);*/
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
             List<? extends IndividuoAbs> novaPop = populacaoInicial;
-            Map<Parametos, Integer> parametros = new HashMap<>();
-            parametros.put(Parametos.NrDeRodadas, 10);
-            parametros.put(Parametos.NrDeCompetidore, 15);
-            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);
+//            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);
+            novaPop = newSelecao().elitismo(novaPop,10);
             System.out.println(Arrays.toString(novaPop.toArray()));
         }
         /*System.out.println(Arrays.toString(populacaoInicial.toArray()));

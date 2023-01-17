@@ -3,7 +3,6 @@ package testes;
 import Avaliacao2.AlgoritmoGenetico.*;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoCroList;
-import Avaliacao2.AlgoritmoGenetico.selecao.Selecao;
 import Avaliacao2.AlimentarGrafo;
 import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
@@ -11,6 +10,7 @@ import Avaliacao2.GrafoExemplo01.Vertice;
 import java.util.*;
 
 import static Avaliacao2.AlgoritmoGenetico.Prints.informacoesInicais;
+import static Avaliacao2.AlgoritmoGenetico.selecao.Selecao.newSelecao;
 
 
 public class Teste {
@@ -22,7 +22,7 @@ public class Teste {
 
         int tamanhoPopulacao = 100;
         double porcentagemMutacao = 5;
-        int nrGeracoes = 10;
+        int nrGeracoes = 1;
 
         informacoesInicais(nrGeracoes,tamanhoPopulacao,porcentagemMutacao);
 
@@ -41,10 +41,11 @@ public class Teste {
         System.out.println("PROCESSANDO AS GERACOES...");
         List<? extends IndividuoAbs> novaPop = populacaoInicial;
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-            Map<Parametos, Integer> parametros = new HashMap<>();
+            /*Map<Parametos, Integer> parametros = new HashMap<>();
             parametros.put(Parametos.NrDeRodadas, 10);
             parametros.put(Parametos.NrDeCompetidore, 15);
-            novaPop =  Selecao.newSelecao().selecaoPorTorneio( novaPop, parametros, false);
+            novaPop =  Selecao.newSelecao().selecaoPorTorneio( novaPop, parametros, false);*/
+            novaPop = newSelecao().elitismo(novaPop,10);
         }
         printPop(novaPop);
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
