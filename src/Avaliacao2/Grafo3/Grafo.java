@@ -18,8 +18,8 @@ public class Grafo {
                 else if (i > j) valor = grafo[j][i];
                 else valor = r.nextInt(distMax);
 
-                if (r.nextInt(10)<2) valor = 0;//ALMENTA EM 20% A CHANCE DE VIR PESO 0
-                grafo[i][j] = valor;
+
+                grafo[i][j] = valor==0?Integer.MAX_VALUE:valor;
             }
         }
     }
@@ -31,8 +31,14 @@ public class Grafo {
     public int getDistMax() {
         return distMax;
     }
+
     public Aresta getAresta(int verticeOrigem, int verticeDestino) {
-        return new Aresta(verticeOrigem,verticeDestino,grafo[verticeOrigem][verticeDestino]);
+
+        return new Aresta(verticeOrigem, verticeDestino, grafo[verticeOrigem][verticeDestino]);
+    }
+
+    public int length() {
+        return grafo.length;
     }
 
     @Override
@@ -43,7 +49,7 @@ public class Grafo {
             builder.append("[");
             for (int value :
                     content) {
-                builder.append(String.format("%3d, ", value));
+                builder.append(String.format("%10d, ", value));
             }
             builder.append("]\n");
 

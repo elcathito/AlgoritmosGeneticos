@@ -48,7 +48,7 @@ public class Individuo extends IndividuoAbs {
             }
         }
         if(!encontrou){
-            aptidao = 0;
+            aptidao = Integer.MAX_VALUE;
         }
         cromossomo.add(verticeDestino.dado);
         System.out.println("CROMOSSOMO GERADO > "+cromossomo.toString() + "\n    <> Aptidao: "+aptidao +"\n");
