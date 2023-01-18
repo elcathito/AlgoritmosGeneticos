@@ -2,7 +2,6 @@ package Avaliacao2.AlgoritmoGenetico.selecao;
 
 import Avaliacao2.AlgoritmoGenetico.Parametos;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
-import Avaliacao2.Grafo3.Aresta;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +70,7 @@ public class Selecao {
         }
         return eliti;
     }
-    public List<? extends IndividuoAbs> elitismo(List<? extends IndividuoAbs> pop, double porcentagem) {
+    public List<IndividuoAbs> elitismo(List<IndividuoAbs> pop, double porcentagem) {
         Collections.sort(pop);
         int tamanho = pop.size();
         int qtdInd = (int)(tamanho * (porcentagem / 100));

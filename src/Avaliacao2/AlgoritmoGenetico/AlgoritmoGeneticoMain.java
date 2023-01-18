@@ -2,7 +2,6 @@ package Avaliacao2.AlgoritmoGenetico;
 
 import Avaliacao2.AlgoritmoGenetico.individuo.Individuo;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
-import Avaliacao2.AlgoritmoGenetico.selecao.Selecao;
 import Avaliacao2.AlimentarGrafo;
 import Avaliacao2.GrafoExemplo01.Grafo;
 import Avaliacao2.GrafoExemplo01.Vertice;
@@ -21,7 +20,7 @@ public class AlgoritmoGeneticoMain {
         AlimentarGrafo alimentarGrafo = new AlimentarGrafo();
         Grafo grafo = alimentarGrafo.padrao_25_vertices();
 
-        ArrayList<Individuo> populacaoInicial = new ArrayList<>();
+        ArrayList<IndividuoAbs> populacaoInicial = new ArrayList<>();
 
         int tamanhoPopulacao = 100;
         double porcentagemMutacao = 5;
@@ -56,7 +55,7 @@ public class AlgoritmoGeneticoMain {
         parametros.put(Parametos.NrDeRodadas, 10);
         parametros.put(Parametos.NrDeCompetidore, 15);*/
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-            List<? extends IndividuoAbs> novaPop = populacaoInicial;
+            List<IndividuoAbs> novaPop = populacaoInicial;
 //            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);
             novaPop = newSelecao().elitismo(novaPop,10);
             System.out.println(Arrays.toString(novaPop.toArray()));
