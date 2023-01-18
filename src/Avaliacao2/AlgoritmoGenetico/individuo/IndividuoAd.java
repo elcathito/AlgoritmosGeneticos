@@ -2,6 +2,8 @@ package Avaliacao2.AlgoritmoGenetico.individuo;
 
 import Avaliacao2.Grafo3.Aresta;
 import Avaliacao2.Grafo3.Grafo;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static Avaliacao2.AlgoritmoGenetico.codificacao.Codificacao.newCodificacao;
@@ -13,6 +15,10 @@ public class IndividuoAd extends IndividuoAbs{
         return cromossomo;
     }
 
+    public IndividuoAd(List<Aresta> cromossomo, int aptidao) {
+        this.cromossomo = cromossomo;
+        this.aptidao = aptidao;
+    }
 
     public IndividuoAd(Grafo grafo, int origem, int destino) {
         ControleApitidao controle = new ControleApitidao();
