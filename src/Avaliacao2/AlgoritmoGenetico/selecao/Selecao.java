@@ -23,9 +23,9 @@ public class Selecao {
         random = new Random();
     }
 
-    public List<IndividuoAbs> selecaoPorTorneio(List<? extends IndividuoAbs> pop, int nrCompetidores, boolean vencedorMaiorValor) {
+    public List<IndividuoAbs> selecaoPorTorneio(int tamanhoPp, List<? extends IndividuoAbs> pop, int nrCompetidores, boolean vencedorMaiorValor) {
         List<IndividuoAbs> novaPop = new ArrayList<>();
-        for (int i = 0; i < pop.size(); i++) {
+        for (int i = 0; i < tamanhoPp; i++) {
             novaPop.add(torneio(pop, vencedorMaiorValor, nrCompetidores));
         }
 
@@ -61,10 +61,9 @@ public class Selecao {
      * ▪ Costuma-se selecionar pequenas quantidades de
      * indivíduos “de elite”
      **/
-    public List<IndividuoAbs> elitismo(List<IndividuoAbs> pop, int porcentagem) {
+    public List<IndividuoAbs> elitismo(int tamnhoDaPap, List<IndividuoAbs> pop, int porcentagem) {
         Collections.sort(pop);
-        int tamanho = pop.size();
-        int qtdInd = tamanho * porcentagem / 100;
+        int qtdInd = tamnhoDaPap * porcentagem / 100;
         List<IndividuoAbs> eliti = new ArrayList<>();
         int index = 0;
         while (qtdInd-- > 0) {
@@ -73,10 +72,9 @@ public class Selecao {
         return eliti;
     }
 
-    public List<IndividuoAbs> elitismo(List<IndividuoAbs> pop, double porcentagem) {
+    public List<IndividuoAbs> elitismo(int tamnhoDaPap, List<IndividuoAbs> pop, double porcentagem) {
         Collections.sort(pop);
-        int tamanho = pop.size();
-        int qtdInd = (int) (tamanho * (porcentagem / 100));
+        int qtdInd = (int) (tamnhoDaPap * (porcentagem / 100));
         List<IndividuoAbs> eliti = new ArrayList<>();
         int index = 0;
         while (qtdInd-- > 0) {
