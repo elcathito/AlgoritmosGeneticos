@@ -25,10 +25,13 @@ public class AlgoritmoGenetico {
         this.populacao = new ArrayList<>();
         this.grafo = new Grafo(nrVertices, maxDist);
         this.random = new Random();
+        System.out.println(grafo);
+        System.out.println();
     }
 
     public void start(int verticeOrigem, int verticeDestino,int nrDeRodadas,int nrDeCompetidore,double pocentElite){
         long startTime = System.currentTimeMillis();
+        populacao.clear();
         informacoesInicais(nrGeracoes, tamanhoPopulacao, porcentagemMutacao);
 
         System.out.println("START...");
@@ -43,14 +46,15 @@ public class AlgoritmoGenetico {
         System.out.println("PROCESSANDO AS GERACOES...");
         List<IndividuoAbs> novaPop = populacao;
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-            List<IndividuoAbs> elite = newSelecao().elitismo(novaPop, pocentElite);
-            List<IndividuoAbs> torneio = newSelecao().selecaoPorTorneio(novaPop, nrDeCompetidore, false);
+            List<IndividuoAbs> elite = newSelecao().elitismo(tamanhoPopulacao,novaPop, pocentElite);
+            List<IndividuoAbs> torneio = newSelecao().selecaoPorTorneio(tamanhoPopulacao,novaPop, nrDeCompetidore, false);
             novaPop.clear();
             novaPop.addAll(elite);
             novaPop.addAll(torneio);
 
             List<IndividuoAbs> novaPopFilho = new ArrayList<>();
             int sizeNovaPop = novaPop.size();
+
             for (int i = 0; i < sizeNovaPop; i++) {
                 IndividuoAd pai1 = (IndividuoAd) novaPop.get(random.nextInt(sizeNovaPop));
                 IndividuoAd pai2 = (IndividuoAd) novaPop.get(random.nextInt(sizeNovaPop));

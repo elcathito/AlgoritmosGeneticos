@@ -57,7 +57,7 @@ public class AlgoritmoGeneticoMain {
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
             List<IndividuoAbs> novaPop = populacaoInicial;
 //            novaPop = Selecao.newSelecao().selecaoPorTorneio(novaPop, parametros, false);
-            novaPop = newSelecao().elitismo(novaPop,10);
+//            novaPop = newSelecao().elitismo(novaPop,10);
             System.out.println(Arrays.toString(novaPop.toArray()));
         }
         /*System.out.println(Arrays.toString(populacaoInicial.toArray()));
