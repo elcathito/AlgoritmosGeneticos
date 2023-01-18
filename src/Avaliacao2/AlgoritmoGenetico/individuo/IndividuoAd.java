@@ -15,7 +15,7 @@ public class IndividuoAd extends IndividuoAbs{
         return cromossomo;
     }
 
-    public IndividuoAd(List<Aresta> cromossomo, int aptidao) {
+    public IndividuoAd(List<Aresta> cromossomo, double aptidao) {
         this.cromossomo = cromossomo;
         this.aptidao = aptidao;
     }

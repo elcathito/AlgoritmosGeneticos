@@ -1,5 +1,6 @@
 package Avaliacao2.AlgoritmoGenetico.recombinacao;
 
+import Avaliacao2.AlgoritmoGenetico.individuo.ControleApitidao;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAbs;
 import Avaliacao2.AlgoritmoGenetico.individuo.IndividuoAd;
 import Avaliacao2.Grafo3.Aresta;
@@ -65,22 +66,23 @@ public class Recombinacao {
             cromossoFilho2.add(cromossomoP1.get(i));
         }
 
-        AtomicInteger aptidaoFilho1 = new AtomicInteger();
+
+        ControleApitidao controleApitidao = new ControleApitidao();
         cromossoFilho1.forEach(
                 aresta -> {
-                    aptidaoFilho1.addAndGet(aresta.getPeso());
+                    controleApitidao.incremente(aresta.getPeso());
                 }
         );
 
-        AtomicInteger aptidaoFilho2 = new AtomicInteger();
+        ControleApitidao controleApitidao2 = new ControleApitidao();
         cromossoFilho2.forEach(
                 aresta -> {
-                    aptidaoFilho2.addAndGet(aresta.getPeso());
+                    controleApitidao2.incremente(aresta.getPeso());
                 }
         );
 
-        IndividuoAd indFilho1 = new IndividuoAd(cromossoFilho1, aptidaoFilho1.get());
-        IndividuoAd indFilho2 = new IndividuoAd(cromossoFilho1, aptidaoFilho1.get());
+        IndividuoAd indFilho1 = new IndividuoAd(cromossoFilho1, controleApitidao.get());
+        IndividuoAd indFilho2 = new IndividuoAd(cromossoFilho1, controleApitidao2.get());
         novaPopFilho.add(indFilho1);
         novaPopFilho.add(indFilho2);
     }
