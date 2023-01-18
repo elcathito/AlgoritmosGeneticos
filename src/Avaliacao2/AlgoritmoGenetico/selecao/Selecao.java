@@ -60,7 +60,7 @@ public class Selecao {
      * ▪ Costuma-se selecionar pequenas quantidades de
      * indivíduos “de elite”
      **/
-    public List<? extends IndividuoAbs> elitismo(List<? extends IndividuoAbs> pop, int porcentagem) {
+    public List<IndividuoAbs> elitismo(List<IndividuoAbs> pop, int porcentagem) {
         Collections.sort(pop);
         int tamanho = pop.size();
         int qtdInd = tamanho * porcentagem / 100;
