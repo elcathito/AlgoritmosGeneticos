@@ -3,7 +3,7 @@ package Avaliacao2.AlgoritmoGenetico.individuo;
 import Avaliacao2.Grafo3.Aresta;
 import Avaliacao2.Grafo3.Grafo;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static Avaliacao2.AlgoritmoGenetico.codificacao.Codificacao.newCodificacao;
@@ -24,5 +24,13 @@ public class IndividuoAd extends IndividuoAbs{
         ControleApitidao controle = new ControleApitidao();
         cromossomo = newCodificacao().getCromossomo(origem,destino,grafo,controle);
         aptidao = controle.get();
+    }
+
+    @Override
+    public String toString() {
+        return "IndividuoAd{" +
+                "cromossomo=" + Arrays.toString(cromossomo.toArray()) +
+                "\naptidao=" + aptidao +
+                '}';
     }
 }
