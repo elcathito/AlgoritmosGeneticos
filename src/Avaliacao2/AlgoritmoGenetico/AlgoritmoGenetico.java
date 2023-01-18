@@ -40,7 +40,7 @@ public class AlgoritmoGenetico {
             populacao.add(new IndividuoAd(grafo, verticeOrigem, verticeDestino));
         }
         System.out.println("POPULACAO INICIAL ADICIONADA...");
-        /*printPop(populacaoInicial);*/
+        System.out.println(populacao);
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
         System.out.println("PROCESSANDO AS GERACOES...");
@@ -60,11 +60,23 @@ public class AlgoritmoGenetico {
                 IndividuoAd pai2 = (IndividuoAd) novaPop.get(random.nextInt(sizeNovaPop));
                 newRecombinacao().umPonto(pai1.getCromossomo(), pai2.getCromossomo(), novaPopFilho);
             }
+
             novaPop.addAll(novaPopFilho);
-            Collections.sort(novaPop);
+
             System.out.println("Geração nr" + geracao);
             System.out.println("Melhor individo da geração");
-            System.out.println(novaPop.get(0));
+            System.out.println("------------------elite");
+            System.out.println(elite);
+            System.out.println("------------------torneio");
+            System.out.println(torneio);
+            System.out.println("------------------nova Pod");
+            System.out.println(novaPop);
+            Collections.sort(novaPop);
+            System.out.println("------------------novaColoe Pod");
+            System.out.println(novaPop);
+
+
+
         }
 
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");

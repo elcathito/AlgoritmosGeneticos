@@ -67,10 +67,10 @@ public class Recombinacao {
         }
 
 
-        ControleApitidao controleApitidao = new ControleApitidao();
+        ControleApitidao controleApitidao1 = new ControleApitidao();
         cromossoFilho1.forEach(
                 aresta -> {
-                    controleApitidao.incremente(aresta.getPeso());
+                    controleApitidao1.incremente(aresta.getPeso());
                 }
         );
 
@@ -81,8 +81,8 @@ public class Recombinacao {
                 }
         );
 
-        IndividuoAd indFilho1 = new IndividuoAd(cromossoFilho1, controleApitidao.get());
-        IndividuoAd indFilho2 = new IndividuoAd(cromossoFilho1, controleApitidao2.get());
+        IndividuoAd indFilho1 = new IndividuoAd(cromossoFilho1, controleApitidao1.get());
+        IndividuoAd indFilho2 = new IndividuoAd(cromossoFilho2, controleApitidao2.get());
         novaPopFilho.add(indFilho1);
         novaPopFilho.add(indFilho2);
     }
