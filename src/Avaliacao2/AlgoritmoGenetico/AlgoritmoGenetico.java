@@ -40,7 +40,7 @@ public class AlgoritmoGenetico {
             populacao.add(new IndividuoAd(grafo, verticeOrigem, verticeDestino));
         }
         System.out.println("POPULACAO INICIAL ADICIONADA...");
-        System.out.println(populacao);
+        populacao.forEach(System.out::println);
         System.out.println("\n>> -------------------------------------------------------------------------------------------------- <<\n");
 
         System.out.println("PROCESSANDO AS GERACOES...");
@@ -65,15 +65,7 @@ public class AlgoritmoGenetico {
 
             System.out.println("Geração nr" + geracao);
             System.out.println("Melhor individo da geração");
-            System.out.println("------------------elite");
-            System.out.println(elite);
-            System.out.println("------------------torneio");
-            System.out.println(torneio);
-            System.out.println("------------------nova Pod");
-            System.out.println(novaPop);
-            Collections.sort(novaPop);
-            System.out.println("------------------novaColoe Pod");
-            System.out.println(novaPop);
+            System.out.println(novaPop.get(0));
 
 
 

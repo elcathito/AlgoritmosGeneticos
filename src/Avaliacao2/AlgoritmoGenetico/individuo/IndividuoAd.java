@@ -29,8 +29,8 @@ public class IndividuoAd extends IndividuoAbs{
     @Override
     public String toString() {
         return "IndividuoAd{" +
-                "cromossomo=" + Arrays.toString(cromossomo.toArray()) +
-                "\naptidao=" + aptidao +
-                '}';
+                "aptidao=" + aptidao +
+                ", cromossomo=" + Arrays.toString(cromossomo.toArray()) +
+                "}";
     }
 }
