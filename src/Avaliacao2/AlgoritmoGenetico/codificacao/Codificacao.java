@@ -39,7 +39,7 @@ public class Codificacao {
         Avaliacao2.Grafo3.Aresta aresta = grafo.getAresta(origem, proximoPonto);
         controleApi.incremente(aresta.getPeso());
         cromossomo.add(aresta);
-        if (proximoPonto != destino && controleApi.get() < 21474836) {
+        if (proximoPonto != destino && controleApi.get() < 1000) {
             buscaDoDestino(proximoPonto, destino, grafo, cromossomo, controleApi);
         }
     }
@@ -49,7 +49,7 @@ public class Codificacao {
         Aresta caminhoEscolhido = arestasOri.get(random.nextInt(arestasOri.size()));
         controleApi.incremente(caminhoEscolhido.peso);
         rota.add(new MapVerticeAresta(origem, caminhoEscolhido));
-        if (!caminhoEscolhido.destino.equals(destino) && controleApi.get() < 200)
+        if (!caminhoEscolhido.destino.equals(destino) && controleApi.get() < 1000)
             buscaDoDestino(destino, rota, caminhoEscolhido.destino, controleApi);
     }
 }

@@ -19,7 +19,7 @@ public class Grafo {
                 else valor = r.nextInt(distMax);
 
 
-                grafo[i][j] = valor==0?Integer.MAX_VALUE:valor;
+                grafo[i][j] = valor==0?1000:valor;
             }
         }
     }
