@@ -39,7 +39,7 @@ public class Codificacao {
         Avaliacao2.Grafo3.Aresta aresta = grafo.getAresta(origem, proximoPonto);
         controleApi.incremente(aresta.getPeso());
         cromossomo.add(aresta);
-        if (proximoPonto != destino && controleApi.get() < 200) {
+        if (proximoPonto != destino && controleApi.get() < 21474836) {
             buscaDoDestino(proximoPonto, destino, grafo, cromossomo, controleApi);
         }
     }
