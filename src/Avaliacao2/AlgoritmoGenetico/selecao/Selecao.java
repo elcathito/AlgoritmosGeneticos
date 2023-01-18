@@ -23,11 +23,13 @@ public class Selecao {
         random = new Random();
     }
 
-    public List<IndividuoAbs> selecaoPorTorneio(List<? extends IndividuoAbs> pop, Map<Parametos, Integer> parametros, boolean vencedorMaiorValor) {
+    public List<IndividuoAbs> selecaoPorTorneio(List<? extends IndividuoAbs> pop, int nrCompetidores, boolean vencedorMaiorValor) {
         List<IndividuoAbs> novaPop = new ArrayList<>();
-        for (int i = 0; i < parametros.get(Parametos.NrDeRodadas); i++) {
-            novaPop.add(torneio(pop, vencedorMaiorValor, parametros.get(Parametos.NrDeCompetidore)));
+        for (int i = 0; i < pop.size(); i++) {
+            novaPop.add(torneio(pop, vencedorMaiorValor, nrCompetidores));
         }
+
+
         return novaPop;
     }
 
@@ -64,18 +66,19 @@ public class Selecao {
         int tamanho = pop.size();
         int qtdInd = tamanho * porcentagem / 100;
         List<IndividuoAbs> eliti = new ArrayList<>();
-        int index =0;
+        int index = 0;
         while (qtdInd-- > 0) {
             eliti.add(pop.get(index++));
         }
         return eliti;
     }
+
     public List<IndividuoAbs> elitismo(List<IndividuoAbs> pop, double porcentagem) {
         Collections.sort(pop);
         int tamanho = pop.size();
-        int qtdInd = (int)(tamanho * (porcentagem / 100));
+        int qtdInd = (int) (tamanho * (porcentagem / 100));
         List<IndividuoAbs> eliti = new ArrayList<>();
-        int index =0;
+        int index = 0;
         while (qtdInd-- > 0) {
             eliti.add(pop.get(index++));
         }

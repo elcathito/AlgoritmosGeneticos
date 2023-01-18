@@ -43,11 +43,8 @@ public class AlgoritmoGenetico {
         System.out.println("PROCESSANDO AS GERACOES...");
         List<IndividuoAbs> novaPop = populacao;
         for (int geracao = 0; geracao < nrGeracoes; geracao++) {
-            Map<Parametos, Integer> parametros = new HashMap<>();
-            parametros.put(Parametos.NrDeRodadas, nrDeRodadas);
-            parametros.put(Parametos.NrDeCompetidore, nrDeCompetidore);
             List<IndividuoAbs> elite = newSelecao().elitismo(novaPop, pocentElite);
-            List<IndividuoAbs> torneio = newSelecao().selecaoPorTorneio(novaPop, parametros, false);
+            List<IndividuoAbs> torneio = newSelecao().selecaoPorTorneio(novaPop, nrDeCompetidore, false);
             novaPop.clear();
             novaPop.addAll(elite);
             novaPop.addAll(torneio);
