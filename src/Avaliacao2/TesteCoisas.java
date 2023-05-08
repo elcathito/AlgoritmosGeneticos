@@ -13,6 +13,7 @@ public class TesteCoisas {
         List<String> listNos = Arrays.asList( "A", "B", "C");
 
         System.out.println(listNos);
+        System.out.println("Olá, mundo");
 
 
     }
